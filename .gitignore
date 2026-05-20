@@ -1,0 +1,6 @@
+# Enviroment
+.venv/
+.env
+
+# User specific
+.idea/
