@@ -1,6 +1,11 @@
-# Enviroment
+# Environment
 .venv/
 .env
+__pycache__/
+*.py[cod]
 
 # User specific
 .idea/
+
+# Django
+db.sqlite3
