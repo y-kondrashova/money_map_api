@@ -61,3 +61,16 @@ class RegisterResponseSerializer(serializers.ModelSerializer):
     def get_refresh(user):
         refresh = RefreshToken.for_user(user)
         return str(refresh)
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            "id",
+            "email",
+            "first_name",
+            "last_name",
+            "created_at",
+        ]
+        read_only_fields = ["id", "email", "created_at"]
