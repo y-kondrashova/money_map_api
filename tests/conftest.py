@@ -18,6 +18,13 @@ def user():
 
 
 @pytest.fixture
+def another_user():
+    return User.objects.create_user(
+        email="test2@example.com", password="strongpassword2123"
+    )
+
+
+@pytest.fixture
 def authenticated_client(api_client, user):
     api_client.force_authenticate(user=user)
     return api_client
