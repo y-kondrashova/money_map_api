@@ -14,4 +14,5 @@ urlpatterns = [
     path("api/auth/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/auth/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("api/category/", include("apps.category.urls")),
+    path("api/wallet/", include("apps.wallets.urls")),
 ]
