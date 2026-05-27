@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "apps.accounts",
     "apps.category",
+    "apps.wallets",
 ]
 
 REST_FRAMEWORK = {
