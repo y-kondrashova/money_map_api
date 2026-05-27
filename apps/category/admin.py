@@ -14,11 +14,10 @@ class CategoryAdmin(admin.ModelAdmin):
         "created_at",
         "updated_at",
     )
-    list_link = ("id", "name")
+    list_display_links = ("id", "name")
     list_editable = ("is_active",)
     list_filter = ("category_type", "is_active", "created_at")
     search_fields = ("name", "user__email", "user__first_name", "user__last_name")
-    autocomplete_fields = ("user",)
     readonly_fields = ("id", "created_at", "updated_at")
     date_hierarchy = "created_at"
     list_per_page = 25
