@@ -2,6 +2,8 @@ import pytest
 from django.contrib.auth import get_user_model
 from rest_framework.test import APIClient
 
+from apps.category.models import Category
+
 User = get_user_model()
 
 
@@ -28,3 +30,15 @@ def another_user():
 def authenticated_client(api_client, user):
     api_client.force_authenticate(user=user)
     return api_client
+
+
+@pytest.fixture
+def user_category(user):
+    return Category.objects.create(user=user, name="Food", category_type="EXPENSE")
+
+
+@pytest.fixture
+def another_user_category(another_user):
+    return Category.objects.create(
+        user=another_user, name="Restaurants", category_type="EXPENSE"
+    )
