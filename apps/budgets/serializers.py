@@ -2,8 +2,15 @@ from rest_framework import serializers
 from apps.budgets.models import Budget
 from decimal import Decimal
 
+from apps.budgets.services import calculate_budget_progress
+
 
 class BudgetSerializer(serializers.ModelSerializer):
+    spent_amount = serializers.SerializerMethodField()
+    remaining_amount = serializers.SerializerMethodField()
+    used_percent = serializers.SerializerMethodField()
+    status = serializers.SerializerMethodField()
+
     class Meta:
         model = Budget
         fields = [
@@ -11,6 +18,10 @@ class BudgetSerializer(serializers.ModelSerializer):
             "name",
             "category",
             "limit_amount",
+            "spent_amount",
+            "remaining_amount",
+            "used_percent",
+            "status",
             "period",
             "start_date",
             "end_date",
@@ -19,6 +30,22 @@ class BudgetSerializer(serializers.ModelSerializer):
             "updated_at",
         ]
         read_only_fields = ["id", "is_active", "created_at", "updated_at"]
+
+    @staticmethod
+    def get_spent_amount(obj):
+        return calculate_budget_progress(obj)["spent_amount"]
+
+    @staticmethod
+    def get_remaining_amount(obj):
+        return calculate_budget_progress(obj)["remaining_amount"]
+
+    @staticmethod
+    def get_used_percent(obj):
+        return calculate_budget_progress(obj)["used_percent"]
+
+    @staticmethod
+    def get_status(obj):
+        return calculate_budget_progress(obj)["status"]
 
     @staticmethod
     def validate_limit_amount(value):
