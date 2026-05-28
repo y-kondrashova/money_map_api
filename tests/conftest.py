@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from rest_framework.test import APIClient
 
 from apps.category.models import Category
+from apps.wallets.models import Wallet
 
 User = get_user_model()
 
@@ -42,3 +43,8 @@ def another_user_category(another_user):
     return Category.objects.create(
         user=another_user, name="Restaurants", category_type="EXPENSE"
     )
+
+
+@pytest.fixture
+def user_wallet(user):
+    return Wallet.objects.create(user=user, name="Cash", initial_balance=1000)
