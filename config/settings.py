@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "apps.category",
     "apps.wallets",
     "apps.budgets",
+    "apps.transactions",
 ]
 
 REST_FRAMEWORK = {
