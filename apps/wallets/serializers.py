@@ -2,8 +2,12 @@ from rest_framework import serializers
 from apps.wallets.models import Wallet
 from decimal import Decimal
 
+from apps.wallets.services import calculate_wallet_balance
+
 
 class WalletSerializer(serializers.ModelSerializer):
+    current_balance = serializers.SerializerMethodField()
+
     class Meta:
         model = Wallet
         fields = [
@@ -11,11 +15,22 @@ class WalletSerializer(serializers.ModelSerializer):
             "name",
             "currency",
             "initial_balance",
+            "current_balance",
             "is_active",
             "created_at",
             "updated_at",
         ]
-        read_only_fields = ["id", "is_active", "created_at", "updated_at"]
+        read_only_fields = [
+            "id",
+            "current_balance",
+            "is_active",
+            "created_at",
+            "updated_at",
+        ]
+
+    @staticmethod
+    def get_current_balance(obj):
+        return calculate_wallet_balance(obj)
 
     @staticmethod
     def validate_name(value):
