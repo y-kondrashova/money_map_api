@@ -1,11 +1,13 @@
 from django.contrib import admin
 from .models import Budget
 
-admin.site.register(Budget)
 
-
+@admin.register(Budget)
 class BudgetAdmin(admin.ModelAdmin):
-    ordering = ("name",)
+    ordering = (
+        "-start_date",
+        "name",
+    )
     list_display = (
         "id",
         "name",
@@ -22,8 +24,14 @@ class BudgetAdmin(admin.ModelAdmin):
     list_display_links = ("id", "name")
     list_editable = ("is_active",)
     list_filter = ("period", "is_active", "created_at")
-    search_fields = ("name", "user__email", "user__first_name", "user__last_name")
+    search_fields = (
+        "name",
+        "category__name",
+        "user__email",
+        "user__first_name",
+        "user__last_name",
+    )
     readonly_fields = ("id", "created_at", "updated_at")
     date_hierarchy = "created_at"
     list_per_page = 25
-    list_select_related = ("user",)
+    list_select_related = ("user", "category")
