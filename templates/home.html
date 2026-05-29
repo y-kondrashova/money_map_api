@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MoneyMap API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            color: #222;
+        }
+
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        .header p {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #dcdcdc;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .status {
+            background: white;
+            border-left: 5px solid #2c3e50;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 6px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            transition: 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        .card p {
+            color: #555;
+            min-height: 45px;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 10px;
+            color: white;
+            background: #2c3e50;
+            padding: 10px 14px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .card a:hover {
+            background: #1a252f;
+        }
+
+        .footer {
+            text-align: center;
+            color: #777;
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>MoneyMap API</h1>
+        <p>Personal finance backend API built with Django REST Framework</p>
+    </div>
+
+    <main class="container">
+        <section class="status">
+            <h2>Project Status</h2>
+            <p>
+                MoneyMap is currently a backend MVP. It supports wallets, categories,
+                transactions, budgets, and automatic balance updates.
+            </p>
+        </section>
+
+        <section class="status">
+    <h2>Demo Access</h2>
+    <p>
+        You can test the browsable API using the demo account below.
+        This account has no admin permissions and contains only sample data.
+    </p>
+
+    <p><strong>Email:</strong> demo@example.com</p>
+    <p><strong>Password:</strong> DemoPassword123!</p>
+</section>
+
+        <section class="grid">
+            {% for link in links %}
+                <div class="card">
+                    <h2>{{ link.title }}</h2>
+                    <p>{{ link.description }}</p>
+                    <a href="{{ link.url }}">Open</a>
+                </div>
+            {% endfor %}
+        </section>
+    </main>
+
+    <div class="footer">
+        MoneyMap — Backend MVP
+    </div>
+
+</body>
+</html>

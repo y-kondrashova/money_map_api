@@ -1,0 +1,35 @@
+{% extends "rest_framework/api.html" %}
+
+{% block branding %}
+    <a class="navbar-brand" href="/">
+        MoneyMap API
+    </a>
+{% endblock %}
+
+{% block userlinks %}
+    <li>
+        <a href="/">Home</a>
+    </li>
+    <li>
+        <a href="/api/">API Root</a>
+    </li>
+    <li>
+        <a href="/admin/">Admin</a>
+    </li>
+
+  {% if user.is_authenticated %}
+        <li>
+            <form method="post"
+                  action="{% url 'rest_framework:logout' %}?next=/"
+                  style="display: inline; margin: 0; padding: 0;">
+                {% csrf_token %}
+                <button type="submit"
+                        style="background: none; border: none; color: white; padding: 15px; cursor: pointer;">
+                    Log out
+                </button>
+            </form>
+        </li>
+    {% endif %}
+
+    {{ block.super }}
+{% endblock %}
