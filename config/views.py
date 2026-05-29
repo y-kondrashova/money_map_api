@@ -6,6 +6,21 @@ from rest_framework.response import Response
 def home(request):
     links = [
         {
+            "title": "Swagger Docs",
+            "description": "Interactive API documentation with Swagger UI.",
+            "url": "/api/docs/",
+        },
+        {
+            "title": "ReDoc",
+            "description": "Alternative API documentation view.",
+            "url": "/api/redoc/",
+        },
+        {
+            "title": "OpenAPI Schema",
+            "description": "Raw OpenAPI schema for the API.",
+            "url": "/api/schema/",
+        },
+        {
             "title": "API Root",
             "description": "Main API overview page.",
             "url": "/api/",
