@@ -3,6 +3,11 @@
 MoneyMap is a personal finance management API built with Django and Django REST Framework.
 The project allows users to manage wallets, categories, transactions, and budgets.
 
+## Live Demo
+
+* API: https://money-map-api-ogyf.onrender.com
+* API docs: https://money-map-api-ogyf.onrender.com/api/docs/
+
 ## Tech Stack
 
 * Python
