@@ -8,10 +8,11 @@ The project allows users to manage wallets, categories, transactions, and budget
 * Python
 * Django
 * Django REST Framework
-* PostgreSQL
-* SQLite for local development
-* JWT authentication
-* Render for deployment
+* PostgreSQL / SQLite
+* Simple JWT
+* drf-spectacular
+* pytest
+* Render
 
 ## Features
 
@@ -22,6 +23,20 @@ The project allows users to manage wallets, categories, transactions, and budget
 * Budget management
 * Admin panel
 * REST API structure
+* Swagger documentation
+
+## API Documentation
+
+Interactive documentation:
+
+- Swagger UI: `/api/docs/`
+- ReDoc: `/api/redoc/`
+- OpenAPI Schema: `/api/schema/`
+
+Detailed endpoint list:
+
+- [API Endpoints](docs/API.md)
+- [Authentication Guide](docs/AUTH.md)
 
 ## Installation
 
@@ -112,28 +127,29 @@ Start command example:
 python -m gunicorn config.asgi:application -k uvicorn.workers.UvicornWorker
 ```
 
-Replace `config` with the actual Django project folder name if it is different.
-
 ## Project Structure
 
 ```text
-money_map/
+money_map_api/
 ├── manage.py
 ├── requirements.txt
 ├── build.sh
 ├── README.md
 ├── .env.example
-├── config/
-│   ├── settings.py
-│   ├── urls.py
-│   ├── asgi.py
-│   └── wsgi.py
-└── apps/
-    ├── users/
-    ├── wallets/
-    ├── categories/
-    ├── transactions/
-    └── budgets/
+├── docs/
+├── templates/
+├── tests/
+└── config/
+    ├── settings.py
+    ├── urls.py
+    ├── asgi.py
+    ├── wsgi.py
+    └── apps/
+        ├── accounts/
+        ├── budgets/
+        ├── category/
+        ├── transactions/
+        └── wallets/
 ```
 
 ## License
