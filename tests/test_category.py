@@ -43,7 +43,7 @@ def test_unauthenticated_user_cannot_create_category(api_client):
 
     response = api_client.post(url, payload, format="json")
 
-    assert response.status_code == status.HTTP_401_UNAUTHORIZED
+    assert response.status_code == status.HTTP_403_FORBIDDEN
     assert "detail" in response.data
 
 
@@ -67,7 +67,7 @@ def test_authenticated_user_sees_only_own_categories(
 def test_unauthenticated_user_cannot_list_categories(api_client):
     url = reverse("category-list")
     response = api_client.get(url)
-    assert response.status_code == status.HTTP_401_UNAUTHORIZED
+    assert response.status_code == status.HTTP_403_FORBIDDEN
 
 
 @pytest.mark.django_db

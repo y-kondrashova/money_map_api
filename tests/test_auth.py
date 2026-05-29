@@ -62,7 +62,7 @@ def test_unauthenticated_user_cannot_get_profile(api_client):
 
     response = api_client.get(url)
 
-    assert response.status_code == status.HTTP_401_UNAUTHORIZED
+    assert response.status_code == status.HTTP_403_FORBIDDEN
     assert "detail" in response.data
 
 

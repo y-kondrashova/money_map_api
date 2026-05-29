@@ -32,7 +32,7 @@ def test_unauthenticated_user_cannot_create_wallet(api_client):
     payload = {"name": "Cash"}
     response = api_client.post(url, payload, format="json")
 
-    assert response.status_code == status.HTTP_401_UNAUTHORIZED
+    assert response.status_code == status.HTTP_403_FORBIDDEN
     assert "detail" in response.data
 
 

@@ -39,7 +39,7 @@ def test_unauthenticated_user_cannot_create_budget(api_client, user_category):
     }
 
     response = api_client.post(url, payload, format="json")
-    assert response.status_code == status.HTTP_401_UNAUTHORIZED
+    assert response.status_code == status.HTTP_403_FORBIDDEN
     assert Budget.objects.count() == 0
 
 

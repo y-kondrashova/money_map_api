@@ -65,7 +65,7 @@ def test_unauthenticated_user_cannot_create_transaction(
 
     response = api_client.post(url, payload, format="json")
 
-    assert response.status_code == status.HTTP_401_UNAUTHORIZED
+    assert response.status_code == status.HTTP_403_FORBIDDEN
     assert Transaction.objects.count() == 0
 
 
